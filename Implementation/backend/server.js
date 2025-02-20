@@ -1,29 +1,24 @@
 require('dotenv').config();
 
 const express = require('express');
-const connectDB = require('./config/db');
-const Hero = require('./models/Hero');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+app.use(express.json()); 
+app.use(cors());
+
+// Import routes
+const heroRoutes = require('./routes/heroRoutes');
+app.use('/api/heroes', heroRoutes);
+
 const PORT = process.env.PORT || 5000;
+mongoose.connect('mongodb://localhost:27017/', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}).catch(err => console.error('MongoDB Connection Error:', err));
 
-connectDB();
-
-app.get('/test', async (req, res) => {
-  try {
-    const newHero = await Hero.create({
-      name: "Iron Man",
-      role: "Damage",
-      winRate: 53.2,
-      pickRate: 15.7,
-      banRate: 8.4
-    });
-    res.json(newHero);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});

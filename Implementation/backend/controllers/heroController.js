@@ -29,9 +29,11 @@ const createHero = async (req, res) => {
         await newHero.save();
         res.status(201).json(newHero);
     } catch (error) {
-        res.status(400).json({ message: 'Error creating hero', error });
+        console.error('Error creating hero:', error);
+        res.status(400).json({ message: 'Error creating hero', error: error.message });
     }
 };
+
 
 // Update a hero
 const updateHero = async (req, res) => {
