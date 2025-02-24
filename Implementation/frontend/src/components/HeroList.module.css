@@ -1,0 +1,11 @@
+.heroCard {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .heroCard:hover {
+    transform: scale(1.05);
+  }
+  
