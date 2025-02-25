@@ -8,3 +8,9 @@ TITLE: Rivalytics
 Winter 2025 Semester
 
 
+To run the project:
+
+Open a terminal on the backend folder and run the code: node server.js
+
+Open a terminal on the frontend folder and run the code: npm start
+

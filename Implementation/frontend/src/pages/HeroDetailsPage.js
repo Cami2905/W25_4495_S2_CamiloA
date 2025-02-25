@@ -34,13 +34,11 @@ const HeroDetailsPage = () => {
       <button onClick={() => navigate("/heroes")} className="back-button">← Back to Heroes</button>
 
       <div className="hero-details-content">
-        {/* Left Side - Hero Image & Description */}
         <div className="hero-image-container">
           <img src={`/images/${hero.detailImage}`} alt={hero.name} className="hero-detail-image" />
           <p className="hero-description">{hero.description}</p>
         </div>
 
-        {/* Right Side - Stats & Biography */}
         <div className="hero-info">
           <h1 className="hero-name">{hero.name}</h1>
           <div className="hero-role">{hero.role}</div>
