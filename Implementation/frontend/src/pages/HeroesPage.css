@@ -1,0 +1,85 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+}
+
+.heroes-page-container {
+  padding: 20px;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  min-height: 100vh;
+  text-align: center;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.heroes-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+.filter-dropdown {
+  padding: 10px;
+  font-size: 1rem;
+  background: #0f3460;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 4 columns */
+  gap: 20px;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.hero-card {
+  width: 220px;  /* Increased size */
+  height: 280px; /* Adjusted height */
+  background: #0f3460;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.hero-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.hero-name-grid {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+  

@@ -1,0 +1,107 @@
+.hero-details-container {
+  padding: 40px;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  min-height: 100vh;
+  color: white;
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-button {
+  background: #f4c542;
+  color: black;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.hero-details-content {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* Left Side - Large Hero Image & Description */
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-detail-image {
+  width: 100%;
+  max-width: 500px; /* Adjust the image size */
+  height: auto;
+}
+
+.hero-description {
+  font-style: italic;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+/* Right Side - Hero Stats & Biography */
+.hero-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-name {
+  font-size: 5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+.hero-stats {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.hero-stats p {
+  margin: 5px 0;
+}
+
+.hero-biography h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.hero-biography p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.hero-role {
+  font-size: 2rem; 
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f4c542;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+  
+  

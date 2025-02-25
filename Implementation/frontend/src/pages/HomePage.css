@@ -1,0 +1,33 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #1a1a2e, #16213e);
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-logo {
+    width: 500px;
+    max-width: 90%;
+    margin-bottom: 30px;
+  }
+  
+  .home-title {
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #f4c542; 
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  
