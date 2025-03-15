@@ -1,0 +1,82 @@
+.tier-list-container {
+    padding: 40px;
+    background: linear-gradient(to right, #1a1a2e, #16213e);
+    min-height: 100vh;
+    text-align: center;
+    color: white;
+  }
+  
+  .tier-list-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: "Bebas Neue", sans-serif;
+  }
+  
+  .tier-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .tier-S {
+    background: #ffcc00; /* Gold */
+  }
+  
+  .tier-A {
+    background: #ff6600; /* Orange */
+  }
+  
+  .tier-B {
+    background: #3399ff; /* Blue */
+  }
+  
+  .tier-C {
+    background: #33cc33; /* Green */
+  }
+  
+  .tier-D {
+    background: #cc3333; /* Red */
+  }
+  
+  .tier-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .tier-heroes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .tier-hero {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+  }
+  
+  .hero-tier-image {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .hero-tier-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .hero-winrate {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.8;
+  }
+  

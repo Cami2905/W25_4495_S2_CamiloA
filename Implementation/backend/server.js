@@ -18,6 +18,9 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 
+const tierListRoutes = require("./routes/tierListRoutes");
+app.use("/api", tierListRoutes);
+
 app.use('/api/heroes', heroRoutes);
 
 
