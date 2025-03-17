@@ -1,0 +1,75 @@
+.player-page-container {
+    padding: 40px;
+    background: linear-gradient(to right, #1a1a2e, #16213e);
+    min-height: 100vh;
+    text-align: center;
+    color: white;
+  }
+  
+  .player-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: "Bebas Neue", sans-serif;
+  }
+  
+  .search-bar-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    color: black;
+  }
+  
+  .search-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: #f4c542;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .search-button:hover {
+    background: #e0b937;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .player-profile {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .player-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .player-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
