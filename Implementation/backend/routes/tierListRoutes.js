@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const MRAPIClient = require("../services/mrapiService");
+const { getAllHeroStats } = require("../services/marvelRivalsService");
 
 router.get("/tier-list", async (req, res) => {
   try {
-    const heroStats = await MRAPIClient.getHeroStats();
+    const heroStats = await getAllHeroStats();
     res.json(heroStats);
   } catch (error) {
     res.status(500).json({ message: "Error fetching tier list data", error: error.message });
@@ -12,3 +12,4 @@ router.get("/tier-list", async (req, res) => {
 });
 
 module.exports = router;
+
