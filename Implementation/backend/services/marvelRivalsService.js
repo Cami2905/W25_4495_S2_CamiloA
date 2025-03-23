@@ -1,56 +1,51 @@
 const axios = require("axios");
-const rateLimit = require("axios-rate-limit");
 require("dotenv").config();
 
 const API_BASE_URL = "https://marvelrivalsapi.com/api/v1/heroes/hero/";
-const API_KEY = process.env.MARVEL_RIVALS_API_KEY; // Store API key in .env
+const API_KEY = process.env.MARVEL_RIVALS_API_KEY;
 
-const heroesList = [
-  "Storm", "Iron Man", "Spider-Man", "Hulk", "Thor",
-  "Captain America", "Doctor Strange", "Magneto", "Venom", "Black Panther",
-  "Black Widow", "Hawkeye", "Hela", "Human Torch", "Iron Fist", "Magik",
-  "Mister Fantastic", "Moon Knight", "Namor", "Psylocke", "Scarlet Witch",
-  "Squirrel Girl", "Star-Lord", "The Punisher", "Winter Soldier", "Wolverine",
-  "Adam Warlock", "Cloak & Dagger", "Invisible Woman", "Jeff The Land Shark",
-  "Loki", "Luna Snow", "Mantis", "Rocket Raccoon"
+const TOTAL_MATCHES = 400284;
+
+// Hero IDs
+const heroIds = [
+  1022, 1018, 1027, 1011, 1037, 1042, 1051, 1039, 1035, 
+  1026, 1033, 1021, 1024, 1017, 1052, 1034, 1029, 1040, 1030, 
+  1045, 1048, 1038, 1036, 1032, 1043, 1015, 1014, 1041, 1049, 
+  1046, 1025, 1050, 1047, 1016, 1031, 1020, 1023
 ];
 
-// Set up rate-limited axios instance (2 requests per second)
-const http = rateLimit(
-  axios.create({
-    baseURL: API_BASE_URL,
-    headers: { "x-api-key": API_KEY },
-  }),
-  { maxRequests: 2, perMilliseconds: 1000 }
-);
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-async function fetchHeroStats(heroName) {
+async function fetchHeroStats(heroId) {
   try {
-    const response = await http.get(`${heroName}/stats`);
+    const response = await axios.get(`${API_BASE_URL}${heroId}/stats`, {
+      headers: { "x-api-key": API_KEY }
+    });
     return response.data;
   } catch (error) {
-    console.error(`Error fetching stats for ${heroName}:`, error.message);
+    console.error(`Error fetching stats for Hero ID ${heroId}:`, error.message);
     return null;
   }
 }
 
 async function getAllHeroStats() {
-  let totalMatches = 0;
   const heroStatsArray = [];
 
-  for (const hero of heroesList) {
-    const heroStats = await fetchHeroStats(hero);
+  for (const heroId of heroIds) {
+    console.log(`Fetching stats for Hero ID ${heroId}...`);
+    const heroStats = await fetchHeroStats(heroId);
     if (heroStats) {
-      totalMatches += heroStats.matches; // Sum total matches
       heroStatsArray.push(heroStats);
     }
+
+
+    await delay(1500);
   }
 
-  // Calculate pick rate for each hero
   const processedStats = heroStatsArray.map(hero => ({
     hero_name: hero.hero_name,
     win_rate: ((hero.wins / hero.matches) * 100).toFixed(2),
-    pick_rate: ((hero.matches / totalMatches) * 100).toFixed(2),
+    pick_rate: ((hero.matches / TOTAL_MATCHES) * 100).toFixed(2), 
     matches: hero.matches,
     wins: hero.wins,
     kda: `${hero.k.toFixed(1)}/${hero.d.toFixed(1)}/${hero.a.toFixed(1)}`
@@ -60,3 +55,5 @@ async function getAllHeroStats() {
 }
 
 module.exports = { getAllHeroStats };
+
+
