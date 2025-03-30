@@ -6,7 +6,7 @@ require("dotenv").config(); // ✅ Load environment variables from .env
 // Import routes
 const tierListRoutes = require("./routes/tierListRoutes");
 const heroRoutes = require("./routes/heroRoutes");
-
+const playerRoutes = require("./routes/playerRoutes"); // ✅ Import new player routes
 
 const app = express();
 
@@ -29,7 +29,8 @@ mongoose
 
 // ✅ API Routes
 app.use("/api", tierListRoutes);
-app.use("/api/heroes", heroRoutes); 
+app.use("/api/heroes", heroRoutes);
+app.use("/api", playerRoutes); // ✅ Add player routes
 
 // ✅ Default Route
 app.get("/", (req, res) => {
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 // ✅ Start the Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
 
 

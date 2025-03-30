@@ -1,75 +1,102 @@
-.player-page-container {
-    padding: 40px;
-    background: linear-gradient(to right, #1a1a2e, #16213e);
-    min-height: 100vh;
-    text-align: center;
-    color: white;
-  }
-  
-  .player-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    font-family: "Bebas Neue", sans-serif;
-  }
-  
-  .search-bar-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .search-input {
-    padding: 10px;
-    font-size: 1rem;
-    width: 250px;
-    border: none;
-    border-radius: 5px;
-    background: white;
-    color: black;
-  }
-  
-  .search-button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background: #f4c542;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .search-button:hover {
-    background: #e0b937;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-  
-  .player-profile {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .player-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-  }
-  
-  .player-name {
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
+/* General styling */
+.player-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  color: white;
+  text-align: center;
+}
+
+/* Title */
+.player-search-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-bar button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* Error Message */
+.error-message {
+  color: #ff4d4d;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Player Card */
+.player-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 350px;
+  transition: 0.3s ease;
+}
+
+.player-card h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.player-card p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* View Profile Button */
+.view-profile-button {
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.view-profile-button:hover {
+  background-color: #ddd;
+}
+
+
+
   

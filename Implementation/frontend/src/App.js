@@ -23,7 +23,7 @@ function App() {
           <Route path="/heroes/:id" element={<HeroDetailsPage />} />
           <Route path="/tier-list" element={<TierListPage />} />
           <Route path="/player" element={<PlayerPage />} />
-          <Route path="/player/:uid" element={<PlayerDetailsPage />} />
+          <Route path="/player/:playerId" element={<PlayerDetailsPage />} />
           <Route path="/streams" element={<Streams />} />
           <Route path="/guides" element={<Guides />} />
         </Routes>
