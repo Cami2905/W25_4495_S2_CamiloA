@@ -98,6 +98,34 @@ const PlayerDetailsPage = () => {
     });
   }, [playerData, heroTabMode, sortColumn, sortDirection]);
 
+  const sortedMaps = useMemo(() => {
+    if (!playerData?.maps) return [];
+    return [...playerData.maps].sort((a, b) => {
+      const val = (map, col) => ({
+        matches: map.matches,
+        winrate: map.matches ? map.wins / map.matches : 0,
+        kda: (map.kills + map.assists) / (map.deaths || 1),
+        time: map.play_time,
+      }[col]);
+
+      return sortDirection === "asc" ? val(a, sortColumn) - val(b, sortColumn) : val(b, sortColumn) - val(a, sortColumn);
+    });
+  }, [playerData, sortColumn, sortDirection]);
+
+  const sortedMatchups = useMemo(() => {
+    if (!playerData?.hero_matchups) return [];
+    return [...playerData.hero_matchups].sort((a, b) => {
+      const val = (matchup, col) => ({
+        matches: matchup.matches,
+        winrate: matchup.matches ? matchup.wins / matchup.matches : 0,
+      }[col]);
+
+      return sortDirection === "asc"
+        ? val(a, sortColumn) - val(b, sortColumn)
+        : val(b, sortColumn) - val(a, sortColumn);
+    });
+  }, [playerData, sortColumn, sortDirection]);
+
   const formatTime = (seconds) => {
     if (!seconds || seconds < 60) return `${Math.round(seconds)}s`;
     const minutes = Math.floor(seconds / 60);
@@ -123,28 +151,28 @@ const PlayerDetailsPage = () => {
 
   return (
     <div className="player-details-container">
-      {/* Player Overview Section */}
-      <div className="player-overview">
-        <img
-          className="player-icon"
-          src={`https://marvelrivalsapi.com/rivals${player.icon.player_icon}`}
-          alt="Player Icon"
-        />
-        <div className="player-info">
-          <h1>{playerData.name}</h1>
-          <p>Level: {player.level}</p>
-          <p>Last Match: 1 week ago</p>
-        </div>
-        <button className="update-button">Update</button>
+    {/* Player Overview Section */}
+    <div className="player-overview">
+      <img
+        className="player-icon"
+        src={`https://marvelrivalsapi.com/rivals${player.icon.player_icon}`}
+        alt="Player Icon"
+      />
+      <div className="player-info">
+        <h1>{playerData.name}</h1>
+        <p>Level: {player.level}</p>
+        <p>Last Match: 1 week ago</p>
       </div>
-  
-      {/* Tabs Navigation */}
-      <div className="tabs-container">
-        <button className={activeTab === "overview" ? "active" : ""} onClick={() => setActiveTab("overview")}>Overview</button>
-        <button className={activeTab === "heroes" ? "active" : ""} onClick={() => setActiveTab("heroes")}>Heroes</button>
-        <button>Maps</button>
-        <button>Matchups</button>
-      </div>
+      <button className="update-button">Update</button>
+    </div>
+
+    {/* Tabs Navigation */}
+    <div className="tabs-container">
+      <button className={activeTab === "overview" ? "active" : ""} onClick={() => setActiveTab("overview")}>Overview</button>
+      <button className={activeTab === "heroes" ? "active" : ""} onClick={() => setActiveTab("heroes")}>Heroes</button>
+      <button className={activeTab === "maps" ? "active" : ""} onClick={() => setActiveTab("maps")}>Maps</button>
+      <button className={activeTab === "matchups" ? "active" : ""} onClick={() => setActiveTab("matchups")}>Matchups</button>
+    </div>
   
       {activeTab === "overview" && (
         <div className="rank-match-container">
@@ -329,7 +357,7 @@ const PlayerDetailsPage = () => {
                 const winRate = hero.matches > 0 ? ((hero.wins / hero.matches) * 100).toFixed(2) : "0.00";
                 const damagePerMin = safeDivide(hero.damage, hero.play_time / 60);
                 const healingPerMin = safeDivide(hero.heal, hero.play_time / 60);
-                const timePlayed = formatTime(hero.play_time * 60);
+                const timePlayed = formatTime(hero.play_time);
                 return (
                   <tr key={index}>
                     <td className="hero-cell">
@@ -351,6 +379,94 @@ const PlayerDetailsPage = () => {
           </table>
         </div>
       )}
+      {activeTab === "maps" && (
+      <div className="maps-tab">
+        <table className="hero-stats-table">
+          <thead>
+            <tr>
+              {["Map", "Matches", "Win Rate", "KDA", "Time"].map((label, i) => {
+                const key = label.toLowerCase().replace(" ", "");
+                return (
+                  <th key={key} onClick={() => handleSort(key)} className={sortColumn === key ? "sorted-column" : ""}>
+                    {label} {getIcon(key)}
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {sortedMaps.map((map, index) => {
+              const mapName = capitalizeWords(mapNames[map.map_id] || "Unknown Map");
+              const winRate = map.matches ? ((map.wins / map.matches) * 100).toFixed(2) : "0.00";
+              const avgKills = safeDivide(map.kills, map.matches);
+              const avgDeaths = safeDivide(map.deaths, map.matches);
+              const avgAssists = safeDivide(map.assists, map.matches);
+              const kda = ((Number(avgKills) + Number(avgAssists)) / (Number(avgDeaths) || 1)).toFixed(2);
+              const timePlayed = formatTime(map.play_time);
+
+              return (
+                <tr key={index}>
+                  <td className="map-cell">
+                   <img
+                      className="maps-tab-thumbnail"
+                      src={`https://marvelrivalsapi.com/${map.map_thumbnail}`}
+                      alt={mapName}
+                    />
+                    <span className="map-name">{mapName}</span>
+                  </td>
+                  <td>{map.matches}</td>
+                  <td>{winRate}%</td>
+                  <td>
+                    {kda} KDA
+                    <div className="sub-kda">{avgKills} / {avgDeaths} / {avgAssists}</div>
+                  </td>
+                  <td>{timePlayed}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    )}
+
+{activeTab === "matchups" && (
+      <div className="matchups-tab">
+        <table className="hero-stats-table">
+          <thead>
+            <tr>
+              {["Hero", "Matches", "Win Rate"].map((label) => {
+                const key = label.toLowerCase().replace(" ", "");
+                return (
+                  <th
+                    key={key}
+                    onClick={() => handleSort(key)}
+                    className={sortColumn === key ? "sorted-column" : ""}
+                  >
+                    {label} {getIcon(key)}
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {sortedMatchups.map((matchup, index) => {
+              const heroName = capitalizeWords(matchup.hero_name);
+              const winRate = matchup.matches > 0 ? ((matchup.wins / matchup.matches) * 100).toFixed(2) : "0.00";
+              return (
+                <tr key={index}>
+                  <td className="hero-cell">
+                    <img src={`https://marvelrivalsapi.com/rivals${matchup.hero_thumbnail}`} alt={heroName} />
+                    {heroName}
+                  </td>
+                  <td>{matchup.matches}</td>
+                  <td>{winRate}%</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    )}
     </div>
   );
 }

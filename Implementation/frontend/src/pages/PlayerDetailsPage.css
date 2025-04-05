@@ -2,7 +2,7 @@
   padding: 2rem;
   background-color: #0f1122;
   color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Player Overview */
@@ -420,6 +420,25 @@
   background-color: #20243b;
 }
 
+td.map-cell {
+  display: flex !important;
+  align-items: center !important;
+}
+
+img.maps-tab-thumbnail {
+  width: 150px !important;
+  height: 80px !important;
+  object-fit: cover !important;
+  border-radius: 6px !important;
+  margin-right: 24px !important;
+}
+
+span.map-name {
+  font-size: 1.3rem !important;
+  color: white !important;
+}
+
+
 /* Responsive (Optional) */
 @media screen and (max-width: 768px) {
   .hero-stats-table thead {
@@ -443,4 +462,5 @@
     display: block;
     margin-bottom: 0.3rem;
   }
+  
 }
