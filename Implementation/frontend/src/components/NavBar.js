@@ -32,12 +32,6 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/player">Find Player</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/streams">Streams</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/guides">Guides</Link>
-            </li>
           </ul>
         </div>
       </div>
