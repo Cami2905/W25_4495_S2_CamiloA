@@ -7,6 +7,8 @@ require("dotenv").config(); // ✅ Load environment variables from .env
 const tierListRoutes = require("./routes/tierListRoutes");
 const heroRoutes = require("./routes/heroRoutes");
 const playerRoutes = require("./routes/playerRoutes"); // ✅ Import new player routes
+const rankingsRoutes = require("./routes/rankingsRoutes");
+
 
 const app = express();
 
@@ -30,7 +32,9 @@ mongoose
 // ✅ API Routes
 app.use("/api", tierListRoutes);
 app.use("/api/heroes", heroRoutes);
-app.use("/api", playerRoutes); // ✅ Add player routes
+app.use("/api", playerRoutes);
+app.use("/api/rankings", rankingsRoutes);
+
 
 // ✅ Default Route
 app.get("/", (req, res) => {

@@ -1,0 +1,88 @@
+.rankings-page {
+    padding: 30px;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .rankings-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffc857;
+    text-align: center;
+    background-color: #1b1c2e;
+    padding: 12px 24px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  
+  .hero-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #11121a;
+  }
+  
+  .hero-stats-table thead {
+    background-color: #161827;
+  }
+  
+  .hero-stats-table th,
+  .hero-stats-table td {
+    padding: 16px 18px;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #ffffff;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  
+  .hero-stats-table th {
+    font-weight: 600;
+    color: #cfd3ec;
+    cursor: pointer;
+    border-bottom: 2px solid #1e2235;
+  }
+  
+  .hero-stats-table th.sorted-column {
+    color: #56a8ff;
+    border-bottom: 2px solid #56a8ff;
+  }
+  
+  .hero-stats-table tbody tr {
+    background-color: #1a1b2e;
+    transition: background 0.2s;
+  }
+  
+  .hero-stats-table tbody tr:hover {
+    background-color: #22243a;
+  }
+  
+  .hero-stats-table td.hero-cell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  .hero-stats-table td.hero-cell img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .sub-kda {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 4px;
+  }
+  
+  .loading {
+    color: white;
+    font-size: 1.4rem;
+    padding: 40px;
+    text-align: center;
+  }
+  
