@@ -3,6 +3,9 @@ const router = express.Router();
 const heroController = require('../controllers/heroController');
 const Hero = require('../models/Hero');
 
+// ✅ Place this FIRST so it doesn't get overridden by /:id
+router.get('/hero/:query', heroController.getHeroFromAPI);
+
 // GET all heroes
 router.get('/', async (req, res) => {
     try {
@@ -13,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET a hero by ID
+// ✅ This must come AFTER /hero/:query
 router.get('/:id', async (req, res) => {
     try {
         const hero = await Hero.findById(req.params.id);
@@ -24,7 +27,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// GET heroes by role (Tank, Duelist, Support)
+// Role filter (safe to keep here)
 router.get('/role/:role', async (req, res) => {
     try {
         const role = req.params.role;
@@ -35,13 +38,9 @@ router.get('/role/:role', async (req, res) => {
     }
 });
 
-// POST (Create) a new hero
 router.post('/', heroController.createHero);
-
-// PUT (Update) an existing hero
 router.put('/:id', heroController.updateHero);
-
-// DELETE a hero
 router.delete('/:id', heroController.deleteHero);
 
 module.exports = router;
+

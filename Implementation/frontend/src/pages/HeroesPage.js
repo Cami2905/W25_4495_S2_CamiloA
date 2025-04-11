@@ -33,10 +33,10 @@ const HeroesPage = () => {
 
   const navigate = useNavigate();
 
-const handleHeroClick = (heroId) => {
-  navigate(`/heroes/${heroId}`);
-};
-
+  const handleHeroClick = (heroName) => {
+    navigate(`/heroes/${encodeURIComponent(heroName)}`);
+  };
+   
 
   return (
     <div className="heroes-page-container">
@@ -52,7 +52,7 @@ const handleHeroClick = (heroId) => {
 
       <div className="heroes-grid">
         {filteredHeroes.map(hero => (
-          <div key={hero._id} className="hero-card" onClick={() => handleHeroClick(hero._id)}>
+          <div key={hero._id} className="hero-card" onClick={() => handleHeroClick(hero.name)}>
             <img src={`/images/${hero.image}`} alt={hero.name} className="hero-image" />
             <p className="hero-name-grid">{hero.name}</p>
           </div>
@@ -63,5 +63,6 @@ const handleHeroClick = (heroId) => {
 };
 
 export default HeroesPage;
+
 
 

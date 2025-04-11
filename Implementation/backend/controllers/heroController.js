@@ -1,3 +1,4 @@
+const axios = require('axios');
 const Hero = require('../models/Hero');
 
 // Get all heroes
@@ -21,6 +22,27 @@ const getHeroById = async (req, res) => {
     }
 };
 
+// ✅ NEW: Get hero data from Marvel Rivals API using hero name
+const getHeroFromAPI = async (req, res) => {
+    const query = decodeURIComponent(req.params.query);
+    const url = `https://marvelrivalsapi.com/api/v1/heroes/hero/${query}`;
+
+    try {
+        const response = await axios.get(url, {
+            headers: {
+                "x-api-key": process.env.MARVEL_RIVALS_API_KEY,
+            },
+        });
+
+        res.status(200).json(response.data);
+    } catch (error) {
+        res.status(500).json({
+            message: "Failed to load hero details from API",
+            error: error.message,
+        });
+    }
+};
+
 // Create a new hero
 const createHero = async (req, res) => {
     try {
@@ -33,7 +55,6 @@ const createHero = async (req, res) => {
         res.status(400).json({ message: 'Error creating hero', error: error.message });
     }
 };
-
 
 // Update a hero
 const updateHero = async (req, res) => {
@@ -60,7 +81,9 @@ const deleteHero = async (req, res) => {
 module.exports = {
     getAllHeroes,
     getHeroById,
+    getHeroFromAPI, // ✅ export new function
     createHero,
     updateHero,
     deleteHero
 };
+
