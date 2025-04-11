@@ -18,17 +18,6 @@ const HeroDetailsPage = () => {
       .trim();
   };
   
-  const renderDifficultyStars = (difficulty) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <span key={i} className={`star ${i <= difficulty ? "filled" : ""}`}>★</span>
-      );
-    }
-    return stars;
-  };
-  
-  
 
   useEffect(() => {
     const fetchHeroDetails = async () => {
