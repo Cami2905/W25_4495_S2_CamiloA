@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link className="navbar-brand" to="/">RIVALYTICS - Marvel Rivals</Link>
+        <NavLink className="navbar-brand" to="/">RIVALYTICS</NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,19 +21,19 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <NavLink className="nav-link" to="/" end>Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/heroes">Heroes</Link>
+              <NavLink className="nav-link" to="/heroes">Heroes</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/rankings">Rankings</Link>
+              <NavLink className="nav-link" to="/rankings">Rankings</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/tier-list">Tier List</Link>
+              <NavLink className="nav-link" to="/tier-list">Tier List</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/player">Find Player</Link>
+              <NavLink className="nav-link" to="/player">Find Player</NavLink>
             </li>
           </ul>
         </div>
@@ -43,3 +43,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

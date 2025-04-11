@@ -33,7 +33,7 @@ exports.updateNextHeroRanking = async (req, res) => {
     const heroData = {
       hero_id: heroId,
       hero_name: data.hero_name || heroId.toString(),
-      icon: data.icon,
+      hero_thumbnail: data.hero_thumbnail,
       matches: data.matches,
       wins: data.wins,
       k: data.k,
