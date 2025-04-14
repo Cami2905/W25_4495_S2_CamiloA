@@ -7,10 +7,5 @@ STUDENT ID 300356827
 TITLE: Rivalytics
 Winter 2025 Semester
 
-
-To run the project:
-
-Open a terminal on the backend folder and run the code: node server.js
-
-Open a terminal on the frontend folder and run the code: npm start
+See the installation guide for a step by step guide on how to run the project.
 
