@@ -40,7 +40,7 @@ router.get("/player-profile/:playerId", async (req, res) => {
     console.log(`🔍 Fetching player profile for ID: ${playerId}`); // Debugging log
 
     const response = await axios.get(
-      `https://marvelrivalsapi.com/api/v1/player/${playerId}`,
+      `https://marvelrivalsapi.com/api/v1/player/${playerId}?season=1`,
       {
         headers: {
           "x-api-key": MARVEL_RIVALS_API_KEY,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigate
+import { useNavigate } from "react-router-dom"; 
 import "./PlayerPage.css";
 
 const PlayerPage = () => {
@@ -8,19 +8,19 @@ const PlayerPage = () => {
   const [playerData, setPlayerData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [forceRender, setForceRender] = useState(0); // ✅ Force UI update
-  const navigate = useNavigate(); // ✅ Define navigate function
+  const [forceRender, setForceRender] = useState(0); 
+  const navigate = useNavigate(); 
 
   const handleSearch = async () => {
     setError(null);
-    setPlayerData(null); // ✅ Reset previous search results
+    setPlayerData(null); 
 
     if (!searchTerm.trim()) {
       setError("Please enter a player name.");
       return;
     }
 
-    setLoading(true); // ✅ Show loading state
+    setLoading(true); 
 
     try {
       console.log(`🔎 Searching for player: ${searchTerm}`);
@@ -29,22 +29,15 @@ const PlayerPage = () => {
         `http://localhost:5000/api/player-search/${searchTerm}`
       );
 
-      // ✅ Debugging logs
-      console.log("✅ API Raw Response:", response);
-      console.log("✅ API Response Data:", response.data);
-
-      // ✅ Ensure response contains expected player data
       if (response.data && typeof response.data === "object" && response.data.name && response.data.uid) {
         console.log("✅ Extracted Player Name:", response.data.name);
         console.log("✅ Extracted Player UID:", response.data.uid);
 
-        // ✅ Update playerData state
         setPlayerData({
           name: response.data.name,
           uid: response.data.uid
         });
 
-        // ✅ Force UI update
         setForceRender(prev => prev + 1);
 
         console.log("✅ Player Data Set:", { name: response.data.name, uid: response.data.uid });

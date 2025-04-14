@@ -161,9 +161,7 @@ const PlayerDetailsPage = () => {
       <div className="player-info">
         <h1>{playerData.name}</h1>
         <p>Level: {player.level}</p>
-        <p>Last Match: 1 week ago</p>
       </div>
-      <button className="update-button">Update</button>
     </div>
 
     {/* Tabs Navigation */}
@@ -267,7 +265,7 @@ const PlayerDetailsPage = () => {
               const { kills, deaths, assists, is_win, hero_name, hero_type } = match.player_performance;
   
               const heroDisplayName = capitalizeWords(hero_name);
-              const matchType = match.game_mode_id === 1 ? "Competitive" : "Quick Play";
+              const matchType = match.game_mode_id === 1 ? "Quick Play" : "Competitive";
               const mapDisplayName = mapNames[match.map_id] || "Unknown Map";
               const duration = Math.round(match.duration);
               const minutes = Math.floor(duration / 60);

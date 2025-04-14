@@ -3,7 +3,7 @@ const router = express.Router();
 const heroController = require('../controllers/heroController');
 const Hero = require('../models/Hero');
 
-// ✅ Place this FIRST so it doesn't get overridden by /:id
+
 router.get('/hero/:query', heroController.getHeroFromAPI);
 
 // GET all heroes
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// ✅ This must come AFTER /hero/:query
+
 router.get('/:id', async (req, res) => {
     try {
         const hero = await Hero.findById(req.params.id);
